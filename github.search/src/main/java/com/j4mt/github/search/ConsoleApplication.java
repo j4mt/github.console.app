@@ -19,31 +19,26 @@ public class ConsoleApplication implements CommandLineRunner {
         this.helloService = helloService;
     }
 
-    public static void main(String[] args) {
-//		SpringApplication.run(ConsoleApplication.class, args);
+    public static void main(String... args) {
         SpringApplication app = new SpringApplication(ConsoleApplication.class);
-//         disable spring banner
         app.setBannerMode(Banner.Mode.OFF);
         app.run(args);
     }
 
     @Override
     public void run(String... args) throws Exception {
-//         check if the user passes any arguments
         if (args.length > 0) {
-            if (args[0].equalsIgnoreCase("searchUser")) {
+            if (args[0].equalsIgnoreCase("--searchUser")) {
                 System.out.println("In search user");
                 ResponseEntity<String> response = searchService.searchUser(args[1]);
                 //TODO: display User information in Console
-            } else if (args[0].equalsIgnoreCase("searchRepo")) {
+            } else if (args[0].equalsIgnoreCase("--searchRepo")) {
                 System.out.println("In search Repo");
-//				System.out.println(searchService.searchRepo(args[1]));
+
             } else {
                 System.out.println(helloService.getMessage(args[0]));
             }
-
         } else {
-            // print default message
             System.out.println(helloService.getMessage());
         }
     }
