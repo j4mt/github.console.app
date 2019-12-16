@@ -1,15 +1,23 @@
 package com.j4mt.github.search;
 
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.Parameter;
+import com.beust.jcommander.ParameterDescription;
+import com.beust.jcommander.ParameterException;
 import com.j4mt.github.search.service.HelloService;
 import com.j4mt.github.search.service.SearchService;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.ResponseEntity;
 
 @SpringBootApplication
 public class ConsoleApplication implements CommandLineRunner {
+
+    @Parameter(names = {"--searchUser", "-su"}, description = "Search User")
+    String user;
+    @Parameter(names = {"--SearchRepo", "-sr"}, description = "Search repository")
+    String repo;
 
     private HelloService helloService;
 
@@ -19,25 +27,26 @@ public class ConsoleApplication implements CommandLineRunner {
         this.helloService = helloService;
     }
 
-    public static void main(String... args) {
+    public static void main(String... argv) {
         SpringApplication app = new SpringApplication(ConsoleApplication.class);
         app.setBannerMode(Banner.Mode.OFF);
-        app.run(args);
+        app.run(argv);
     }
 
     @Override
-    public void run(String... args) throws Exception {
-        if (args.length > 0) {
-            if (args[0].equalsIgnoreCase("--searchUser")) {
-                System.out.println("In search user");
-                ResponseEntity<String> response = searchService.searchUser(args[1]);
-                //TODO: display User information in Console
-            } else if (args[0].equalsIgnoreCase("--searchRepo")) {
-                System.out.println("In search Repo");
-
-            } else {
-                System.out.println(helloService.getMessage(args[0]));
+    public void run(String... argv) {
+        ConsoleApplication consoleApplication = new ConsoleApplication(new HelloService());
+        JCommander jCommander = new JCommander(this);
+        if (argv.length > 0) {
+            try {
+                jCommander.parse(argv);
+            } catch (ParameterException pe) {
+                System.err.println(pe.getMessage());
             }
+            for (ParameterDescription cmd : jCommander.getParameters()) {
+                System.out.println("Parameter " + cmd.getDescription());
+            }
+
         } else {
             System.out.println(helloService.getMessage());
         }
