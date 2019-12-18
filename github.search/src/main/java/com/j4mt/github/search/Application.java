@@ -2,7 +2,8 @@ package com.j4mt.github.search;
 
 import com.j4mt.github.search.connector.GitHubConnector;
 import com.j4mt.github.search.model.Repositories;
-import com.j4mt.github.search.util.ArgParser;
+import com.j4mt.github.search.model.Repository;
+import com.j4mt.github.search.model.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
@@ -28,9 +29,16 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... argv) {
 
-        ArgParser argParser = new ArgParser();
-        argParser.parse(argv);
-        if(argParser.isValid())
-            System.out.println(gitHubConnector.searchRepo(argParser.get("--searchRepo"), argParser.getOrDefault("--perPage", "10")));
+        if (argv.length == 2) {
+
+            Repository repository = gitHubConnector.searchRepo(argv[0], "1").getItems().get(0);
+            System.out.println("Name : " + repository.getName() + ", Stars : " + repository.getStargazersCount());
+
+            Tag[] tags = gitHubConnector.getLatestTagForRepo(repository.getOwner().getLogin(), repository.getName(), "1");
+            if (tags[0].getName().equalsIgnoreCase(argv[1]))
+                System.out.println("Search Tag is Latest");
+            else
+                System.out.println("Search Tag is not Latest");
+        }
     }
 }

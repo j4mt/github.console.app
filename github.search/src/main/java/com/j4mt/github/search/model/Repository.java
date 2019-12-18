@@ -8,6 +8,11 @@ public class Repository {
 
     private String name;
 
+    private Owner owner;
+
+    @JsonProperty("stargazers_count")
+    private String stargazersCount;
+
     @JsonProperty("full_name")
     private String fullName;
 
@@ -27,8 +32,19 @@ public class Repository {
         this.fullName = fullName;
     }
 
-    @Override
-    public String toString() {
-        return String.format("\tRepository : {fullName='%s'}\n", fullName);
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }
+
+    public String getStargazersCount() {
+        return stargazersCount;
+    }
+
+    public void setStargazersCount(String stargazersCount) {
+        this.stargazersCount = stargazersCount;
     }
 }
