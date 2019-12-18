@@ -15,8 +15,14 @@ public class GitHubConnectorTest {
     private GitHubConnector gitHubConnector;
 
     @Test
-    public void test_GitHubConnector_searchRepo(){
+    public void test_GitHubConnector_searchRepo_for_1(){
         Repositories repositories = gitHubConnector.searchRepo("testng", 1);
         assertThat(repositories.size(), is(1));
+    }
+
+    @Test
+    public void test_GitHubConnector_searchRepo_for_5(){
+        Repositories repositories = gitHubConnector.searchRepo("testng", 5);
+        assertThat(repositories.size(), is(5));
     }
 }
