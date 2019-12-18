@@ -29,6 +29,6 @@ public class Repository {
 
     @Override
     public String toString() {
-        return String.format("Repository{fullName='%s'}", fullName);
+        return String.format("\tRepository : {fullName='%s'}\n", fullName);
     }
 }

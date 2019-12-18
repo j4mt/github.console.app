@@ -25,8 +25,11 @@ public class Repositories {
     @Override
     public String toString() {
 
-        return items.stream()
-                .map(Repository::toString)
-                .collect(Collectors.joining("\n"));
+        return String.format(
+                "\nSearch Results :\n\n%s",
+                items.stream()
+                        .map(Repository::toString)
+                        .collect(Collectors.joining("\n"))
+        );
     }
 }
