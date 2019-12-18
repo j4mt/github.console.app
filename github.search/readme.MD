@@ -8,4 +8,9 @@
         - java - jar .\target\github.search-0.0.1-SNAPSHOT.jar --searchRepo TestNG --perPage 1 (get only one repo)
         
         
+- to look at jacoco reports
+
+    - github.search\target\site\jacoco
+        
+        
         
