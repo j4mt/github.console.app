@@ -15,8 +15,16 @@ public class ArgParser {
             map.put(argv[i], argv[i + 1]);
     }
 
+    public boolean isValid() {
+        return !map.isEmpty();
+    }
+
     public String get(String s) {
         return map.get(s);
+    }
+
+    public String getOrDefault(String s, String defaultValue) {
+        return map.getOrDefault(s, defaultValue);
     }
 
     @Override
