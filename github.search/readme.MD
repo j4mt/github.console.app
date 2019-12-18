@@ -5,8 +5,9 @@
     - mvn clean package
     - java - jar .\target\github.search-0.0.1-SNAPSHOT.jar {args}
 
-        - java - jar .\target\github.search-0.0.1-SNAPSHOT.jar --searchRepo TestNg
-        - java - jar .\target\github.search-0.0.1-SNAPSHOT.jar --searchRepo TestNG --perPage 1 (get only one repo)
+       - java -jar .\target\github.search-0.0.1-SNAPSHOT.jar testNG testng-6.9.5 (latest From Date: 23:47 18/12/2019)
+       - java -jar .\target\github.search-0.0.1-SNAPSHOT.jar testNG testng-6.9.4
+        
 
 - adding jacoco report
 
