@@ -9,19 +9,19 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ConsoleApplication implements CommandLineRunner {
+public class Application implements CommandLineRunner {
 
     private HelloService helloService;
 
     private SearchService searchService;
 
-    public ConsoleApplication(HelloService helloService) {
+    public Application(HelloService helloService) {
         this.helloService = helloService;
     }
 
     public static void main(String... argv) {
 
-        SpringApplication app = new SpringApplication(ConsoleApplication.class);
+        SpringApplication app = new SpringApplication(Application.class);
         app.setBannerMode(Banner.Mode.OFF);
         app.run(argv);
     }
