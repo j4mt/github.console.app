@@ -11,7 +11,7 @@ public class GitHubConnector {
     @Autowired
     private RestTemplate restTemplate;
 
-    public Repositories searchRepo(String query, Integer perPage) {
+    public Repositories searchRepo(String query, String perPage) {
 
         return restTemplate.getForObject("https://api.github.com/search/repositories?q={query}&sort=stars&order=desc&per_page={perPage}", Repositories.class, query, perPage.toString());
     }

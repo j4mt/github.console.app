@@ -27,6 +27,7 @@ public class ArgParserTest {
         argParser.parse(argv);
 
         assertThat(argParser.get("--searchUser"), is(nullValue()));
+        assertThat(argParser.isValid(),is(false));
     }
 
     @Test

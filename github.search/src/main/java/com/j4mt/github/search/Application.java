@@ -1,8 +1,9 @@
 package com.j4mt.github.search;
 
-import com.j4mt.github.search.service.HelloService;
-import com.j4mt.github.search.service.SearchService;
+import com.j4mt.github.search.connector.GitHubConnector;
+import com.j4mt.github.search.model.Repositories;
 import com.j4mt.github.search.util.ArgParser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,12 +12,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
-    private HelloService helloService;
+    @Autowired
+    private GitHubConnector gitHubConnector;
 
-    private SearchService searchService;
-
-    public Application(HelloService helloService) {
-        this.helloService = helloService;
+    public Application() {
     }
 
     public static void main(String... argv) {
@@ -31,6 +30,7 @@ public class Application implements CommandLineRunner {
 
         ArgParser argParser = new ArgParser();
         argParser.parse(argv);
-        System.out.println(argParser);
+        if(argParser.isValid())
+            System.out.println(gitHubConnector.searchRepo(argParser.get("--searchRepo"), argParser.getOrDefault("--perPage", "10")));
     }
 }
