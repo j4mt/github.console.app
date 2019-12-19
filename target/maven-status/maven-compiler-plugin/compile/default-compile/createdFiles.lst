@@ -1,0 +1,7 @@
+com\j4mt\github\search\model\Repository.class
+com\j4mt\github\search\model\Tag.class
+com\j4mt\github\search\ApplicationConfig.class
+com\j4mt\github\search\Application.class
+com\j4mt\github\search\model\Owner.class
+com\j4mt\github\search\model\Repositories.class
+com\j4mt\github\search\connector\GitHubConnector.class

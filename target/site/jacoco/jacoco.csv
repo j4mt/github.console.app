@@ -1,0 +1,6 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+github.search,com.j4mt.github.search.model,Repository,0,31,0,0,0,13,0,9,0,9
+github.search,com.j4mt.github.search.model,Repositories,0,14,0,0,0,5,0,4,0,4
+github.search,com.j4mt.github.search.model,Tag,0,10,0,0,0,4,0,3,0,3
+github.search,com.j4mt.github.search.model,Owner,0,10,0,0,0,4,0,3,0,3
+github.search,com.j4mt.github.search.connector,GitHubConnector,0,41,0,0,0,3,0,3,0,3
